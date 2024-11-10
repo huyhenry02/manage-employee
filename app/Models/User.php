@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -17,10 +16,38 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_INACTIVE = 'inactive';
+
+    public const STATUS = [
+        self::ROLE_ADMIN => 'Admin',
+        self::ROLE_EMPLOYEE => 'Employee',
+    ];
+
+    public const ROLE_ADMIN = 'admin';
+    public const ROLE_EMPLOYEE = 'employee';
+
+    public const ROLE = [
+        self::ROLE_ADMIN => 'Admin',
+        self::ROLE_EMPLOYEE => 'Employee',
+    ];
+
     protected $fillable = [
-        'name',
         'email',
+        'email_verified_at',
         'password',
+        'first_name',
+        'last_name',
+        'dob',
+        'gender',
+        'contact_info',
+        'address',
+        'date_joined',
+        'status',
+        'role_type',
+        'position_id',
+        'department_id'
+
     ];
 
     /**
