@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('first_name');
             $table->string('last_name');
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive']);
             $table->enum('role_type', ['admin', 'employee']);
             $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
 

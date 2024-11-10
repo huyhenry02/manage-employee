@@ -1,0 +1,38 @@
+[
+    {
+        "department_name": "Nhân sự"
+    },
+    {
+        "department_name": "Kế toán và Tài chính"
+    },
+    {
+        "department_name": "Phát triển Phần mềm"
+    },
+    {
+        "department_name": "Kinh doanh và Bán hàng"
+    },
+    {
+        "department_name": "Marketing và Truyền thông"
+    },
+    {
+        "department_name": "Pháp chế và Tuân thủ"
+    },
+    {
+        "department_name": "Hỗ trợ Khách hàng"
+    },
+    {
+        "department_name": "Nghiên cứu và Phát triển (R&D)"
+    },
+    {
+        "department_name": "Quản lý Sản phẩm"
+    },
+    {
+        "department_name": "Đảm bảo Chất lượng (QA)"
+    },
+    {
+        "department_name": "Vận hành và IT"
+    },
+    {
+        "department_name": "Thiết kế và Trải nghiệm Người dùng (UX/UI)"
+    }
+]

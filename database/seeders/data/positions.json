@@ -1,0 +1,22 @@
+[
+    {
+        "position_title": "Trưởng phòng",
+        "description": "Quản lý và điều phối hoạt động của phòng ban.",
+        "base_salary": 25000000
+    },
+    {
+        "position_title": "Chuyên viên",
+        "description": "Thực hiện các công việc chuyên môn trong phòng ban.",
+        "base_salary": 18000000
+    },
+    {
+        "position_title": "Nhân viên",
+        "description": "Phụ trách các công việc được giao trong phòng ban.",
+        "base_salary": 12000000
+    },
+    {
+        "position_title": "Thực tập sinh",
+        "description": "Hỗ trợ và học hỏi các công việc trong phòng ban.",
+        "base_salary": 5000000
+    }
+]
