@@ -22,6 +22,8 @@ Route::group([
         Route::get('/index', [EmployeeController::class, 'showIndex'])->name('employee.showIndex');
         Route::get('/update', [EmployeeController::class, 'showUpdate'])->name('employee.showUpdate');
         Route::get('/create', [EmployeeController::class, 'showCreate'])->name('employee.showCreate');
+
+        Route::post('/create', [EmployeeController::class, 'create'])->name('employee.create');
     });
 
     Route::group([

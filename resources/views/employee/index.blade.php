@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3 class="card-title">Danh sách nhân viên</h3>
-                    <a href="" class="btn btn-primary">Thêm mới</a>
+                    <a href="{{ route('employee.showCreate') }}" class="btn btn-primary">Thêm mới</a>
                 </div>
 
                 <table class="table table-bordered table-hover">

@@ -4,10 +4,8 @@
         <div class="card mt-4">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4">Tạo mới nhân viên</h5>
-
-                <form action="" enctype="multipart/form-data" method="post">
+                <form action="{{ route('employee.create') }}" method="post">
                     @csrf
-
                     <div class="form-group mb-3">
                         <label for="first_name" class="form-label">Họ và tên</label>
                         <div class="row">
@@ -26,7 +24,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="password" class="form-label">Mật khẩu</label>
-                        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="password" required>
+                        <input type="text" class="form-control" id="password" placeholder="Nhập mật khẩu" name="password" required>
                     </div>
 
                     <div class="form-group mb-3">
@@ -59,18 +57,22 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="position_id" class="form-label">Vị trí</label>
-                        <select class="form-select" id="position_id" name="role_type">
-                            <option value="admin">Quản trị viên</option>
-                            <option value="staff">Nhân viên</option>
+                        <label for="department_id" class="form-label">Phòng ban</label>
+                        <select class="form-select" id="department_id" name="department_id">
+                            @foreach( $departments as $department )
+                                <option value="{{ $department->id }}">{{ $department->department_name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="department_id" class="form-label">Phòng ban</label>
-                        <input type="number" class="form-control" id="department_id" placeholder="Nhập ID phòng ban" name="department_id">
+                        <label for="position_id" class="form-label">Vị trí</label>
+                        <select class="form-select" id="position_id" name="position_id">
+                            @foreach( $positions as $position )
+                                <option value="{{ $position->id }}">{{ $position->position_title }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Tạo nhân viên</button>
                 </form>
             </div>
