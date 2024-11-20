@@ -26,9 +26,9 @@ class EmployeeController extends Controller
         $departments = Department::all();
         $positions = Position::all();
         return view('employee.create', [
-                'departments' => $departments,
-                'positions' => $positions,
-            ]);
+            'departments' => $departments,
+            'positions' => $positions,
+        ]);
     }
 
     public function showUpdate(): View|Factory|Application
@@ -46,10 +46,8 @@ class EmployeeController extends Controller
             $user = new User();
             $user->fill($input);
             $user->save();
-
             $user->code = 'NV-' . str_pad($user->id, 3, '0', STR_PAD_LEFT);
             $user->save();
-
             DB::commit();
             return redirect()->route('employee.showIndex');
         }catch (\Exception $e) {
