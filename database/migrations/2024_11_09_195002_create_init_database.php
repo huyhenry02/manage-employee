@@ -32,25 +32,17 @@ return new class extends Migration
             $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
         });
 
-        // Create salaries table
-        Schema::create('salaries', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('employee_id')->constrained('users')->onDelete('cascade');
-            $table->integer('base_salary');
-            $table->integer('bonus');
-            $table->integer('deductions');
-            $table->integer('net_salary');
-            $table->date('month_year');
-            $table->timestamps();
-        });
-
         // Create work_hours table
-        Schema::create('work_hours', function (Blueprint $table) {
+        Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')->constrained('users')->onDelete('cascade');
-            $table->date('date');
-            $table->integer('hours_worked');
-            $table->integer('overtime_hours')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('name', 255);
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->text('terms')->nullable();
+            $table->integer('gross_salary');
+            $table->string('attachment_file')->nullable();
+            $table->enum('status', ['inactive', 'active']);
             $table->timestamps();
         });
 
@@ -74,8 +66,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('employee_performance');
-        Schema::dropIfExists('work_hours');
-        Schema::dropIfExists('salaries');
+        Schema::dropIfExists('contracts');
         Schema::dropIfExists('positions');
         Schema::dropIfExists('departments');
     }
