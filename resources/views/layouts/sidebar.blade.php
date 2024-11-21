@@ -24,14 +24,6 @@
                         <span class="hide-menu">Thêm mới</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-chevron-right"></i>
-                    </span>
-                        <span class="hide-menu">Đánh giá hiệu suất</span>
-                    </a>
-                </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Quản lý Phòng ban</span>
@@ -74,26 +66,42 @@
                 </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Quản lý Lương</span>
+                    <span class="hide-menu">Quản lý Hợp đồng</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('salary.showCreate') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('contract.showIndex') }}" aria-expanded="false">
                     <span>
                         <i class="ti ti-chevron-right"></i>
                     </span>
-                        <span class="hide-menu">Tạo bảng lương</span>
+                        <span class="hide-menu">Danh sách hợp đồng</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('contract.showCreate') }}" aria-expanded="false">
+                    <span>
+                        <i class="ti ti-chevron-right"></i>
+                    </span>
+                        <span class="hide-menu">Thêm mới hợp đồng</span>
                     </a>
                 </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Quản lý thời gian làm việc</span>
+                    <span class="hide-menu">Quản lý hiệu suất nhân viên</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('employee-performance.showIndex') }}" aria-expanded="false">
                     <span>
                         <i class="ti ti-chevron-right"></i>
                     </span>
-                        <span class="hide-menu">Theo dõi thời gian làm việc</span>
+                        <span class="hide-menu">Danh sách báo cáo</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('employee-performance.showCreate') }}" aria-expanded="false">
+                    <span>
+                        <i class="ti ti-chevron-right"></i>
+                    </span>
+                        <span class="hide-menu">Thêm báo cáo báo cáo</span>
                     </a>
                 </li>
             </ul>

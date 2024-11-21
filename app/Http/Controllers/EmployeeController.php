@@ -31,9 +31,28 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function showUpdate(): View|Factory|Application
+    public function showDetail(User $user): View|Factory|Application
     {
-        return view('employee.update');
+
+        $contracts = $user->contracts;
+        $reports = $user->reports;
+        return view('employee.detail'
+            , [
+                'user' => $user,
+                'contracts' => $contracts,
+                'reports' => $reports
+            ]);
+    }
+    public function showUpdate(User $user): View|Factory|Application
+    {
+        $departments = Department::all();
+        $positions = Position::all();
+        return view('employee.update'
+            , [
+                'user' => $user,
+                'departments' => $departments,
+                'positions' => $positions
+            ]);
     }
 
     public function create(Request $request)
@@ -47,6 +66,21 @@ class EmployeeController extends Controller
             $user->fill($input);
             $user->save();
             $user->code = 'NV-' . str_pad($user->id, 3, '0', STR_PAD_LEFT);
+            $user->save();
+            DB::commit();
+            return redirect()->route('employee.showIndex');
+        }catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+        }
+    }
+
+    public function postUpdate(User $user, Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $input = $request->all();
+            $user->fill($input);
             $user->save();
             DB::commit();
             return redirect()->route('employee.showIndex');

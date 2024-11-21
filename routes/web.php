@@ -1,17 +1,19 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
-use App\Http\Controllers\SalaryController;
-use App\Http\Controllers\WorkHourController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeePerformanceController;
 
 Route::get('/', function () {
     return view('layouts.main');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
+Route::post('/login', [AuthController::class, 'postLogin'])->name('postLogin');
+Route::get('/logout', [AuthController::class, 'postLogout'])->name('postLogout');
 
 Route::group([
     'prefix' => 'admin'
@@ -20,10 +22,12 @@ Route::group([
         'prefix' => 'employee'
     ], function () {
         Route::get('/index', [EmployeeController::class, 'showIndex'])->name('employee.showIndex');
-        Route::get('/update', [EmployeeController::class, 'showUpdate'])->name('employee.showUpdate');
+        Route::get('/update/{user}', [EmployeeController::class, 'showUpdate'])->name('employee.showUpdate');
+        Route::get('/detail/{user}', [EmployeeController::class, 'showDetail'])->name('employee.showDetail');
         Route::get('/create', [EmployeeController::class, 'showCreate'])->name('employee.showCreate');
 
         Route::post('/create', [EmployeeController::class, 'create'])->name('employee.create');
+        Route::post('/update', [EmployeeController::class, 'update'])->name('employee.update');
     });
 
     Route::group([
@@ -55,18 +59,28 @@ Route::group([
     });
 
     Route::group([
-        'prefix' => 'salary'
+        'prefix' => 'contract'
     ], function () {
-        Route::get('/index', [SalaryController::class, 'showIndex'])->name('salary.showIndex');
-        Route::get('/update', [SalaryController::class, 'showUpdate'])->name('salary.showUpdate');
-        Route::get('/create', [SalaryController::class, 'showCreate'])->name('salary.showCreate');
+        Route::get('/index', [ContractController::class, 'showIndex'])->name('contract.showIndex');
+        Route::get('/update/{contract}', [ContractController::class, 'showUpdate'])->name('contract.showUpdate');
+        Route::get('/create', [ContractController::class, 'showCreate'])->name('contract.showCreate');
+
+        Route::post('/create', [ContractController::class, 'postCreate'])->name('contract.postCreate');
+        Route::post('/update/{contract}', [ContractController::class, 'postUpdate'])->name('contract.postUpdate');
+        Route::get('/delete/{contract}', [ContractController::class, 'delete'])->name('contract.delete');
+
     });
 
     Route::group([
-        'prefix' => 'work_hour'
+        'prefix' => 'employee-performance'
     ], function () {
-        Route::get('/index', [WorkHourController::class, 'showIndex'])->name('work_hour.showIndex');
-        Route::get('/update', [WorkHourController::class, 'showUpdate'])->name('work_hour.showUpdate');
-        Route::get('/create', [WorkHourController::class, 'showCreate'])->name('work_hour.showCreate');
+        Route::get('/index', [EmployeePerformanceController::class, 'showIndex'])->name('employee-performance.showIndex');
+        Route::get('/update/{employeePerformance}', [EmployeePerformanceController::class, 'showUpdate'])->name('employee-performance.showUpdate');
+        Route::get('/create', [EmployeePerformanceController::class, 'showCreate'])->name('employee-performance.showCreate');
+
+        Route::post('/create', [EmployeePerformanceController::class, 'postCreate'])->name('employee-performance.postCreate');
+        Route::post('/update/{employeePerformance}', [EmployeePerformanceController::class, 'postUpdate'])->name('employee-performance.postUpdate');
+        Route::get('/delete/{employeePerformance}', [EmployeePerformanceController::class, 'delete'])->name('employee-performance.delete');
+
     });
 });
